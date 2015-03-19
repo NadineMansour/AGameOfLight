@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+
+
+  #module api to handle api requests under /api/...
   namespace :api, defaults: { format: :json } do
       resources :records do
         collection do
@@ -8,11 +11,10 @@ Rails.application.routes.draw do
           get 'get_level'
         end
       end
+  end
 
-    end
 
 
-  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
