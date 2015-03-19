@@ -41,23 +41,23 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	void Update () {
-		//Checks if any of the buttons are pressed and calls the method responsible for moving/rotating in specified direction
-		if (up) 
-		{
-			MoveUp();
+
+		//To prevent shooter from moving if game is over (light reached target).
+		if (!gameOver) { 
+			//Checks if any of the buttons are pressed and calls the method responsible for moving/rotating in specified direction
+			if (up) {
+				MoveUp ();
+			}
+			if (down) {
+				MoveDown ();
+			}
+			if (RUp) {
+				RotateUp ();
+			}
+			if (RDown) {
+				RotateDown ();
+			}	
 		}
-		if (down) 
-		{
-			MoveDown();
-		}
-		if (RUp) 
-		{
-			RotateUp();
-		}
-		if (RDown) 
-		{
-			RotateDown();
-		}	
 
 		detector (); //detects collision with target
 		if (gameOver) EndGame ();
@@ -157,7 +157,6 @@ public class PlayerScript : MonoBehaviour {
 	public void RotateUp()
 	{
 		float zz = transform.eulerAngles.z;
-		print (zz+ " Up");
 		if ((zz < 60 || zz >=300)) 
 		{
 			transform.Rotate (new Vector3(0,0,0.5f));
@@ -171,7 +170,6 @@ public class PlayerScript : MonoBehaviour {
 	public void RotateDown()
 	{
 		float zz = transform.eulerAngles.z;
-		print (zz+" Down");
 		if ((zz<=61 || zz > 301)) 
 		{
 			transform.Rotate (new Vector3 (0, 0, -0.5f));
