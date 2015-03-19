@@ -30,13 +30,13 @@ class Api::RecordsController < Api::BaseController
 
 	end
 
+
   
     def get_level
 	  	@email = params[:email]
 	  	@records = Record.where(email: @email)
 	  	@record=@records.last
 	end
-
 
 
 
