@@ -23,7 +23,27 @@ public class load : MonoBehaviour {
 	void Update () {
 
 	}
-
+	
+	
+	
+void OnMouseUp()
+    {
+        // no restrictions on level 1
+        //level1 is loaded
+        if (level1 == true)
+        {
+            Application.LoadLevel("Level1");
+        }
+        //checks if the level is unlocked and finished
+        // if true level2 is loaded
+        if (level2 == true && levels.Contains(2) == true && levels.Contains(1))
+        {
+            //when level 2 is added uncomment the the line below 
+            //Application.LoadLevel("Level2");
+        }
+    }
+	
+	
 	
 	IEnumerator get_records_by_email(string user_email) {
 		levels.Clear();
