@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :students
   root :to => "sessions#login"
-
   namespace :api, defaults: { format: :json } do
       resources :records do
         collection do
