@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   devise_for :students
 
 
@@ -13,7 +15,18 @@ Rails.application.routes.draw do
       end
   end
 
-  root 'home#index'
+  
+
+
+
+Rails.application.routes.draw do
+  root                'sessions#new'
+  get    'signup'  => 'students#new'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+  resources :users
+end
 
 
   
