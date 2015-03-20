@@ -14,9 +14,7 @@ Rails.application.routes.draw do
         end
       end
   end
-
-  root 'home#index'
-
+  
 
 
 Rails.application.routes.draw do
