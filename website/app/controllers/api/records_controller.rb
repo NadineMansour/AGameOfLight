@@ -6,8 +6,12 @@ class Api::RecordsController < Api::BaseController
 		@email = params[:email]
 		@password = params[:password]
 		@user = Student.find_by_email(params[:email])
-		if @user.valid_password?(params[:password])
-			render status: 200
+		if @user
+			if @user.valid_password?(params[:password])
+				render status: 200
+			else
+				render status: 401
+			end
 		else
 			render status: 401
 		end
