@@ -12,6 +12,7 @@ public class load : MonoBehaviour {
 	public ArrayList scores = new ArrayList();
 
 	//3Dtext for levels in World1 scene
+	public bool level1 = false;
 	public bool level2 = false;
 
 	//3Dtext for scores in scores scene
@@ -29,7 +30,7 @@ public class load : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		email = ButtonLogin.user_email;
-		 StartCoroutine (get_records_by_email(email));
+		StartCoroutine (get_records_by_email(email));
 	}
 
 	
@@ -37,6 +38,26 @@ public class load : MonoBehaviour {
 	void Update () {
 
 	}
+
+
+
+	void OnMouseUp()
+	{
+		// no restrictions on level 1
+		//level1 is loaded
+		if (level1 == true)
+		{
+			Application.LoadLevel("Level1");
+		}
+		//checks if the level is unlocked and finished
+		// if true level2 is loaded
+		if (level2 == true && levels.Contains(2) == true && levels.Contains(1))
+		{
+
+			Application.LoadLevel("Level2");
+		}
+	}
+
 
 	
 	IEnumerator get_records_by_email(string user_email) {
