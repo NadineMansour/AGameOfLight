@@ -28,7 +28,8 @@ public class load : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		 StartCoroutine (get_records_by_email("mariam@gmail.com"));
+		email = ButtonLogin.user_email;
+		 StartCoroutine (get_records_by_email(email));
 	}
 
 	
