@@ -19,6 +19,14 @@ public class PlayerScript : MonoBehaviour {
 	private static bool gameOver; //check whether target is reached or not
 	public GameObject targetHalo; //Halo around target that is enabled when target is reached
 	public GameObject toLevelsButton; //button that redirect to levels menu after winning
+	//Variables for records table
+	public float StartTime;
+	public float FinishTime;
+	public int timeInLevel;
+	public static int clicks;
+	public int score;
+	public int level;
+
 
 	void Start () {
 		linePositions = new List<Vector3> ();
@@ -31,8 +39,22 @@ public class PlayerScript : MonoBehaviour {
 		targetHalo.SetActive(false); 
 		toLevelsButton.SetActive(false);
 		SetLightBeam (); //changing the values of the light beam parameters themselves
-		
+		StartTime = Time.realtimeSinceStartup;
+		clicks = 0;
+		if (Application.loadedLevelName == "Level1")
+			level = 1;
+		else
+			level = 2;	
 	}
+
+
+	void calculateScore()
+	{
+		score = (120 - timeInLevel) * 100 + (5 - clicks) * 50;
+		if (score <= 50) //to exclude negative scores
+			score = 50;
+	}
+
 
 	void EndGame()
 	{
@@ -40,8 +62,8 @@ public class PlayerScript : MonoBehaviour {
 		toLevelsButton.SetActive(true); //enables the button that's used to redirect to other scene (Levels/Level 2)
 	}
 
-	void Update () {
 
+	void Update () {
 		//To prevent shooter from moving if game is over (light reached target).
 		if (!gameOver) { 
 			//Checks if any of the buttons are pressed and calls the method responsible for moving/rotating in specified direction
@@ -78,8 +100,11 @@ public class PlayerScript : MonoBehaviour {
 		return gameOver;
 	}
 
+
 	public static void UpTrue()
 	{
+		if (!up)
+			clicks++;
 		up = true;
 	}
 
@@ -92,6 +117,8 @@ public class PlayerScript : MonoBehaviour {
 
 	public static void DownTrue()
 	{
+		if(!down)
+			clicks++;
 		down = true;
 	}
 
@@ -104,6 +131,8 @@ public class PlayerScript : MonoBehaviour {
 
 	public static void RUpTrue()
 	{
+		if (!RUp)
+			clicks++;
 		RUp = true;
 	}
 
@@ -116,6 +145,8 @@ public class PlayerScript : MonoBehaviour {
 
 	public static void RDownTrue()
 	{
+		if (!RDown)
+			clicks++;
 		RDown = true;
 	}
 
@@ -153,6 +184,7 @@ public class PlayerScript : MonoBehaviour {
 		}
 	}
 
+
 	//Rotates shooter cw, if limit wasn't reached
 	public void RotateUp()
 	{
@@ -166,6 +198,7 @@ public class PlayerScript : MonoBehaviour {
 		
 	}
 
+
 	//Rotates shooter ccw, if limit wasn't reached
 	public void RotateDown()
 	{
@@ -177,6 +210,7 @@ public class PlayerScript : MonoBehaviour {
 			RotateLightBeam();
 		}
 	}
+
 
 	//Rotates light beam with specified degree indicate dy variable degree around its starting point (Center of shooter)
 	void PointRotator()
@@ -203,6 +237,7 @@ public class PlayerScript : MonoBehaviour {
 		}
 	}
 
+
 	//Called when player clicks on rotation buttons to rotate light beam with shooter
 	void RotateLightBeam()
 	{
@@ -222,6 +257,10 @@ public class PlayerScript : MonoBehaviour {
 					linePositions [1] = hit.point;
 					SetLightBeam ();
 					gameOver = true;
+					FinishTime = Time.realtimeSinceStartup;
+					timeInLevel = (int)FinishTime - (int)StartTime;
+					calculateScore(); //score now has its right value
+					//Mariam, at this point -> Clicks, score, timeInLevel & level are all ready. Good luck
 					//Insert Post records method here.
 
 				}
