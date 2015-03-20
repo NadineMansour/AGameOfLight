@@ -16,7 +16,7 @@ class StudentsController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Welcome!"
-      redirect_to("gameview")
+      redirect_to("home#index")
     else
       render 'new'
     end

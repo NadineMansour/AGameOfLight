@@ -14,11 +14,13 @@ Rails.application.routes.draw do
         end
       end
   end
+
   
 
 
+
 Rails.application.routes.draw do
-  root                'static_pages#home'
+  root                'sessions#new'
   get    'signup'  => 'students#new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
