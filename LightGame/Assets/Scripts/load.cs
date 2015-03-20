@@ -51,7 +51,7 @@ public class load : MonoBehaviour {
 		}
 		//checks if the level is unlocked and finished
 		// if true level2 is loaded
-		if (level2 == true && levels.Contains(2) == true && levels.Contains(1))
+		if (level2 == true && (levels.Contains(2) == true || levels.Contains(1)))
 		{
 
 			Application.LoadLevel("Level2");
