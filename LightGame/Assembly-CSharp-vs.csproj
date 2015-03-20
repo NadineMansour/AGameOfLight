@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\R2Move.cs" />
      <Compile Include="Assets\Scripts\SimpleJSON.cs" />
      <Compile Include="Assets\Scripts\TextScript.cs" />
+     <Compile Include="Assets\Scripts\ToLevels.cs" />
      <Compile Include="Assets\Scripts\UpMove.cs" />
      <Compile Include="Assets\Scripts\load.cs" />
  <Reference Include="UnityEngine.UI">
