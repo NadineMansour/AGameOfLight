@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
 	before_filter :configure_permited_params , if: :devise_controller?
+	  include SessionsHelper
 	def configure_permited_params
 		devise_parameter_sanitizer.for(:sign_up) << [:school , :grade , :student_name , :student_class]
 	end
