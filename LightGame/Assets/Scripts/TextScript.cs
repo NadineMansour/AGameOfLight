@@ -61,9 +61,9 @@ public class TextScript : MonoBehaviour {
 		else
 		{
 			if (Application.loadedLevelName == "Level1")
-				SetText ("Congrats!! People of planet Redo thank you for enlightening their planet");
+				SetText ("Congrats!! People of planet Redo thank you");
 			else
-				SetText ("Congrats!! People of planet Safarawy thank you for enlightening their planet");
+				SetText ("Congrats!! People of planet Safarawy thank you");
 		}
 	}
 
