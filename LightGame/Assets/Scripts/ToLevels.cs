@@ -9,11 +9,11 @@ public class ToLevels : MonoBehaviour {
 
 
 	public void OnMouseDown() {
-		if (Application.loadedLevel == 1) {
-			Application.LoadLevel(2);
+		if (Application.loadedLevelName == "Level1") {
+			Application.LoadLevel("Level2");
 		}
-		if (Application.loadedLevel == 2) {
-			Application.LoadLevel(3);
+		if (Application.loadedLevelName == "Level2") {
+			Application.LoadLevel("END");
 		}
 	}
 	

@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class TextScript : MonoBehaviour {
 
+	public float StartTime;
+
+	void Start () {
+		StartTime = Time.realtimeSinceStartup;
+	}
 
 	public void SetText(string text) 
 	{
@@ -25,13 +30,13 @@ public class TextScript : MonoBehaviour {
 		{
 			if (Application.loadedLevelName == "Level1")
 			{
-				if (Time.realtimeSinceStartup < 5) {
+				if (Time.realtimeSinceStartup - StartTime < 5) {
 					SetText ("You can use this button to move up.");
 				} else {
-					if (Time.realtimeSinceStartup < 10) {
+					if (Time.realtimeSinceStartup - StartTime  < 10) {
 						SetText ("You can use this button to move down.");
 					} else {
-						if (Time.realtimeSinceStartup < 15) {
+						if (Time.realtimeSinceStartup - StartTime  < 15) {
 							SetText ("You can use these 2 buttons to rotate the light source .");
 						} else {
 							SetText (" ");
@@ -41,12 +46,12 @@ public class TextScript : MonoBehaviour {
 			}
 			else
 			{
-				if (Time.realtimeSinceStartup < 5) {
+				if (Time.realtimeSinceStartup  - StartTime  < 5) {
 					SetText ("This is a blackhole that won't let light light pass through it.");
 				}
 				else
 				{
-					if (Time.realtimeSinceStartup < 10)
+					if (Time.realtimeSinceStartup - StartTime  < 10)
 					{
 						SetText ("Find a way to reach the target. Remember light travels in straight lines");
 					}

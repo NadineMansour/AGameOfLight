@@ -136,7 +136,7 @@ public class load : MonoBehaviour {
 				i = i + 1;
 			}
 			//Checks if level 2 is finished
-			if (level2 == true && levels.Contains(2)==false){
+			if (level2 == true && levels.Contains(2)==false && levels.Contains(1)==false){
 				GetComponent<TextMesh>().text = "LOCKED";
 			}
 		}
