@@ -2,6 +2,23 @@ class Api::RecordsController < Api::BaseController
 
 
 
+	def user_login
+		@email = params[:email]
+		@password = params[:password]
+		@user = Student.find_by_email(params[:email])
+		if @user
+			if @user.valid_password?(params[:password])
+				render status: 200
+			else
+				render status: 401
+			end
+		else
+			render status: 401
+		end
+	end
+		
+
+
 	def get_records_by_email
 		#get the email that identifies the user
 		@email = params[:email]
