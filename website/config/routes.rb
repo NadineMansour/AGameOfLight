@@ -16,18 +16,7 @@ Rails.application.routes.draw do
   end
 
   
-
-
-
-Rails.application.routes.draw do
-  root                'sessions#new'
-  get    'signup'  => 'students#new'
-  get    'login'   => 'sessions#new'
-  post   'login'   => 'sessions#create'
-  delete 'logout'  => 'sessions#destroy'
-  resources :users
-end
-
+root 'home#index'
 
   
   # The priority is based upon order of creation: first created -> highest priority.
