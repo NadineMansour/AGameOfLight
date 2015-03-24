@@ -24,8 +24,8 @@
 
 
   <div class="actions">
- 	 <%= f.submit "Log in" %>
- 	 <a href="/students/sign_up">Sign up</a>
+    <%= f.submit "Log in" %>
+   <a href="/students/sign_up">Sign up</a>
   </div>
 
 
