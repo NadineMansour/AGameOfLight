@@ -16,16 +16,5 @@ Rails.application.routes.draw do
   end
 
   
-  get 'home' => 'home#index'
-
-
-Rails.application.routes.draw do
-  root                'sessions#new'
-  get    'signup'  => 'students#new'
-  get    'login'   => 'sessions#new'
-  post   'login'   => 'sessions#create'
-  delete 'logout'  => 'sessions#destroy'
-  resources :users
-end
-
+  root 'home#index'
 end
